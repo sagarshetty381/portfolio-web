@@ -1,0 +1,89 @@
+{
+    "skills": [
+        "TypeScript",
+        "ReactJS",
+        "AngularJS",
+        "NodeJS",
+        "ExpressJS",
+        "MongoDB",
+        "SQL",
+        "PostgreSQL",
+        "NextJS",
+        "GraphQL",
+        "SocketIO",
+        "TailwindCSS",
+        "Redis",
+        "Java"
+    ],
+    "cv": "sagar_resume_cv.pdf",
+    "iconLinkList": {
+        "react": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+        "nodejs": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg",
+        "graphql": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg",
+        "postgresql": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+        "socketio": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/socketio/socketio-original.svg",
+        "nextjs": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original-wordmark.svg",
+        "tailwindcss": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+        "supabase": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg",
+        "apachekafka": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg",
+        "redis": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg",
+        "typescript": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+        "github": "https://www.github.com/sagarshetty381",
+        "linkedin": "https://www.linkedin.com/in/sagarshetty381"
+    },
+    "projectListArr": [
+        {
+            "name": "Bechain",
+            "img": "bechain_logo.png",
+            "techStack": [
+                "react",
+                "nodejs",
+                "apachekafka",
+                "redis",
+                "tailwindcss",
+                "postgresql",
+                "socketio",
+                "supabase",
+                "typescript"
+            ],
+            "toolsUsed": [
+                "ReactJS",
+                "NodeJS",
+                "Supabase",
+                "WebRTC",
+                "SocketIO",
+                "Apache Kafka",
+                "Redis pub/sub"
+            ],
+            "description": "A dating application, utilizing ReactJS as the frontend library and NodeJS serving the REST APIs. Its feature includes real-time chat, video call, and audio call. Scalable and efficient socket communication through Redis pub/sub mechanism. Utilized Apache kafka to reduce the database load during chat operations thus, enhancing overall system performance."
+        },
+        {
+            "name": "GraphQL based Webscrapper API",
+            "techStack": [
+                "nodejs",
+                "graphql",
+                "typescript"
+            ],
+            "toolsUsed": [
+                "NodeJS",
+                "GraphQL",
+                "TypeScript"
+            ],
+            "description": "It implements a GraphQL based API for efficient data retrieval. This API webscrapes all the required data from GSMArena.com websites. It uses NodeJS for server-side development, incorporating asynchronous programming for web scraping."
+        },
+        {
+            "name": "EasyPlanner",
+            "techStack": [
+                "nextjs",
+                "tailwindcss",
+                "typescript"
+            ],
+            "toolsUsed": [
+                "NextJS",
+                "TailwindCSS",
+                "TypeScript"
+            ],
+            "description": "This is website uses user friendly UI, to help users plan out things easily using few tricks."
+        }
+    ]
+}

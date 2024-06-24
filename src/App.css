@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.current {
+  transition: all 0.6s ease-in-out;
+  transform: rotate(0deg) scale(1.2);
+  background-color: rgb(59 130 246);
+  border-color: white;
+}
+
+.project {
+  cursor: pointer;
+  height: fit-content;
+  transition: all 0.6s ease-in-out;
+  background-image: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(192, 192, 192, 0));
+  border: 1px solid rgba(192, 192, 192, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.techStackDiv {
+  translate: 50px;
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+  z-index: -10;
+}
+.parentProjectDiv:hover {
+  transform: scale(1.02);
+  transition: all 0.6s ease-in-out;
+}
+
+.parentProjectDiv:hover .techStackDiv {
+  translate: 0;
+  opacity: 1;
+}
+
+.parentProjectDiv:hover .description {
+  display: block;
+  overflow: visible;
+}
+
+.button {
+  display: block;
+  background: linear-gradient(to right, #3b82f6 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
+}
+.button:hover {
+  background-position: left bottom;
+}
+
+.text:hover {
+  color: white;
+  transition: all .5s ease-out;
+}
