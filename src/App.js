@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import './App.css';
 import emailjs from '@emailjs/browser';
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,8 +16,8 @@ function App() {
   const [errors, setErrors] = useState({});
   const [sectionNavElements, setSectionNavElements] = useState();
   const [sectionElements, setSectionElements] = useState();
-  const [techStackIcon, setTechStackIcon] = useState(iconLinkList);
-  const [projectList, setProjectList] = useState(projectListArr);
+  const [techStackIcon] = useState(iconLinkList);
+  const [projectList] = useState(projectListArr);
   const formRef = useRef();
 
   const SERVICE_ID = process.env.REACT_APP_SERVICE_ID || '';
@@ -28,15 +28,25 @@ function App() {
     setSectionNavElements(document.getElementsByClassName('sectionNav')[0].getElementsByTagName('li'));
   }, [])
 
-  useEffect(() => {
-    const sectionWatcherCallback = (section, sectionWatcher) => {
-      section.forEach((section) => {
-        if (!section.isIntersecting) return;
-        updateMenuOnScroll(section.target.id);
-      })
-    }
+  const updateMenuOnScroll = useCallback((sectionIndex) => {
+    for (let listEl of sectionNavElements) {
+      listEl.firstChild.classList.remove('current');
+    };
+    sectionNavElements[sectionIndex].firstChild.classList.add('current');
+  }, [sectionNavElements])
 
-    const sectionWatcher = new IntersectionObserver(sectionWatcherCallback, watchOptions)
+  const sectionWatcherCallback = useCallback((sections) => {
+    sections.forEach((section) => {
+      if (!section.isIntersecting) return;
+      updateMenuOnScroll(section.target.id);
+    })
+  }, [updateMenuOnScroll]);
+
+  const sectionWatcher = useMemo(() => {
+    return new IntersectionObserver(sectionWatcherCallback, watchOptions);
+  }, [sectionWatcherCallback]); // Add dependencies here
+
+  useEffect(() => {
     sectionElements?.forEach((section) => {
       sectionWatcher.observe(section);
     })
@@ -46,7 +56,7 @@ function App() {
         sectionWatcher.unobserve(section);
       })
     }
-  }, [sectionElements]);
+  }, [sectionElements, sectionWatcher]);
 
   function navigateToSection(sectionIndex) {
     if (sectionIndex === undefined) return;
@@ -55,13 +65,6 @@ function App() {
     if (sectionIndex <= sectionElements.length - 1) {
       sectionElements[sectionIndex]?.scrollIntoView({ behavior: 'smooth' });
     }
-  }
-
-  function updateMenuOnScroll(sectionIndex) {
-    for (let listEl of sectionNavElements) {
-      listEl.firstChild.classList.remove('current');
-    };
-    sectionNavElements[sectionIndex].firstChild.classList.add('current');
   }
 
   const validateForm = () => {
@@ -150,7 +153,7 @@ function App() {
             <li><button className='w-3 h-3 transition-all rotate-45 border-2 border-blue-700 2xl:w-4 2xl:h-4 ' onClick={e => { navigateToSection(3) }} data-sectionindex="3"></button></li>
           </ul>
           <ul className='absolute left-0 z-30 flex flex-col items-center justify-center gap-4 p-4 bg-white rounded-md shadow-2xl shadow-cyan-900'>
-            {['github', 'linkedin'].map(social => <li key={social}><a target='_blank' href={techStackIcon[social]}><img src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${social}/${social}-original.svg`} className='w-6 h-6 2xl:w-8 2xl:h-8' /></a></li>
+            {['github', 'linkedin'].map(social => <li key={social}><a rel="noreferrer" target='_blank' href={techStackIcon[social]}><img alt={social} src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${social}/${social}-original.svg`} className='w-6 h-6 2xl:w-8 2xl:h-8' /></a></li>
             )}
             <li key='email'><a href='mailto:sagar.shetty381@gmail.com'>
               <img className="w-6 h-6 2xl:w-8 2xl:h-8" src="https://img.icons8.com/color/48/gmail--v1.png" alt="e-mail" /></a></li>
@@ -158,7 +161,7 @@ function App() {
           <a href="mailto:sagar.shetty381@gmail.com?subject=Hi Sagar, I would like to hire you." className='w-28 fixed 2xl:text-lg cursor-pointer text-center font-bold tracking-widest hover:tracking-[0.3em] transition-all text-blue-500 text-md top-11 right-11 mix-blend-multiply'>HIRE ME</a>
           <div className='flex flex-row gap-6 text-lg mt-14 2xl:text-2xl 2xl:mt-16'>
             <button onClick={e => navigateToSection(2)} data-sectionindex="2" className='px-3 py-2 font-bold text-blue-500 transition-all border-2 border-blue-500 rounded-lg homeButton hover:bg-blue-500 hover:text-white hover:scale-x-110'>Projects</button>
-            <a href={configJson.cv} target='_blank'><button className='px-3 py-2 font-bold text-blue-500 transition-all border-2 border-blue-500 rounded-lg hover:bg-blue-500 hover:text-white hover:scale-x-110'>Get my CV</button></a>
+            <a href={configJson.cv} target='_blank' rel="noreferrer"><button className='px-3 py-2 font-bold text-blue-500 transition-all border-2 border-blue-500 rounded-lg hover:bg-blue-500 hover:text-white hover:scale-x-110'>Get my CV</button></a>
           </div>
         </div>
       </section>
@@ -190,9 +193,9 @@ function App() {
         <div className='flex items-center justify-center gap-4 p-4 text-[#0f1b61] '>
           {projectList.map((project, index) => {
             return <div key={project.name} className='project relative bg-white flex flex-col rounded-lg w-[300px] 2xl:w-[400px] border-2 border-black parentProjectDiv z-20'>
-              <img className='bg-gray-100 rounded-t-lg aspect-3/2 object-cover max-h-[224px]' src={project?.img || 'placeholder-image.png'}></img>
+              <img className='bg-gray-100 rounded-t-lg aspect-3/2 object-cover max-h-[224px]' alt='project' src={project?.img || 'placeholder-image.png'}></img>
               <div className='absolute flex flex-col gap-3 p-2 bg-white rounded-md techStackDiv -left-10'>
-                {project?.techStack.map((tech) => <img key={tech} className='w-5 h-5' src={techStackIcon[tech]} />)}
+                {project?.techStack.map((tech) => <img key={tech} alt='tech' className='w-5 h-5' src={techStackIcon[tech]} />)}
               </div>
               <div className='p-2 text-sm 2xl:text-lg'>
                 <h2 className='font-bold text-center text-md 2xl:text-xl'>{project.name}</h2>
