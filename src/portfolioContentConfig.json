@@ -25,9 +25,11 @@
         "nextjs": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original-wordmark.svg",
         "tailwindcss": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
         "supabase": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg",
+        "babel": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/babel/babel-original.svg",
         "apachekafka": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg",
         "redis": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg",
         "typescript": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+        "redux": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg",
         "github": "https://www.github.com/sagarshetty381",
         "linkedin": "https://www.linkedin.com/in/sagarshetty381"
     },
@@ -37,12 +39,14 @@
             "img": "bechain_logo.png",
             "techStack": [
                 "react",
+                "redux",
                 "nodejs",
+                "postgresql",
                 "apachekafka",
                 "redis",
-                "tailwindcss",
-                "postgresql",
                 "socketio",
+                "tailwindcss",
+                "babel",
                 "supabase",
                 "typescript"
             ],

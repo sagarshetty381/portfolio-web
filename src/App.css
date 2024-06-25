@@ -49,8 +49,24 @@
 .button:hover {
   background-position: left bottom;
 }
-
 .text:hover {
   color: white;
   transition: all .5s ease-out;
+}
+
+.project-scroller {
+  display: grid;
+  width: auto;
+  grid-auto-flow: column;
+  gap: 2rem;
+  grid-auto-columns: 63%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: 4rem;
+  scrollbar-width: none;
+}
+
+.project-element {
+  scroll-snap-align: start;
 }
