@@ -23,6 +23,7 @@ function App() {
   const SERVICE_ID = process.env.REACT_APP_SERVICE_ID || '';
   const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID || '';
   const PUBLIC_KEY = process.env.REACT_APP_PUBLIC_KEY || '';
+
   useEffect(() => {
     setSectionElements(document.querySelectorAll('section'));
     setSectionNavElements(document.getElementsByClassName('sectionNav')[0].getElementsByTagName('li'));
@@ -152,7 +153,7 @@ function App() {
             <li><button className='w-3 h-3 transition-all rotate-45 border-2 border-blue-700 2xl:w-4 2xl:h-4 ' onClick={e => { navigateToSection(2) }} data-sectionindex="2"></button></li>
             <li><button className='w-3 h-3 transition-all rotate-45 border-2 border-blue-700 2xl:w-4 2xl:h-4 ' onClick={e => { navigateToSection(3) }} data-sectionindex="3"></button></li>
           </ul>
-          <ul className='absolute left-0 z-30 flex flex-col items-center justify-center gap-4 p-4 bg-white rounded-md shadow-2xl shadow-cyan-900'>
+          <ul className='absolute top-0 left-0 z-30 flex flex-col items-center justify-center gap-4 p-4 bg-white rounded-md shadow-2xl top-2 sm:top-auto shadow-cyan-900'>
             {['github', 'linkedin'].map(social => <li key={social}><a rel="noreferrer" target='_blank' href={techStackIcon[social]}><img alt={social} src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${social}/${social}-original.svg`} className='w-6 h-6 2xl:w-8 2xl:h-8' /></a></li>
             )}
             <li key='email'><a href='mailto:sagar.shetty381@gmail.com'>
@@ -165,9 +166,9 @@ function App() {
           </div>
         </div>
       </section>
-      <section id='1' className='w-full h-screen bg-[#f4f9fc] flex justify-center items-center' style={{ 'scrollSnapAlign': 'start' }}>
-        <div className='flex gap-6 max-w-[1000px] 2xl:text-xl 2xl:max-w-[1300px] 2xl:gap-8'>
-          <article className='flex-1 pr-8 text-justify text-[#0f1b61] border-r-2 border-blue-500 2xl:pr-9'>
+      <section id='1' className='w-full h-screen bg-[#f4f9fc] flex sm:justify-center items-center' style={{ 'scrollSnapAlign': 'start' }}>
+        <div className='flex flex-col sm:flex-row gap-6 px-4 sm:px-0 sm:max-w-[1000px] 2xl:text-xl 2xl:max-w-[1300px] 2xl:gap-8'>
+          <article className='flex-1 pr-8 text-justify text-[#0f1b61] sm:border-r-2 border-blue-500 2xl:pr-9'>
             <h1 className='mb-3 text-4xl font-bold text-blue-600 2xl:mb-5 2xl:text-5xl'>About me</h1>
             <p className='indent-4'>Hello! I'm Sagar Shetty, a passionate Full Stack Web Developer based in Mumbai, India. With a strong foundation in both front-end and back-end technologies, I specialize in creating dynamic, high-performance web applications.</p>
             <p className='indent-4'>I hold a<b>  Bachelor of Engineering in Information Technology </b> from Terna Engineering College.</p>
@@ -184,7 +185,7 @@ function App() {
           </article>
         </div>
       </section>
-      <section id='2' className='relative flex flex-col items-center justify-center w-full h-screen gap-8' style={{ 'scrollSnapAlign': 'start', background: 'linear-gradient(180deg, #3b82f6 50%,#ffffff 50%)' }}>
+      <section id='2' className='relative flex flex-col items-center justify-center w-full h-screen gap-8 overflow-x-hidden sm:overflow-x-auto' style={{ 'scrollSnapAlign': 'start', background: 'linear-gradient(180deg, #3b82f6 50%,#ffffff 50%)' }}>
         <h1 className='absolute top-0 z-10 flex flex-col mt-5 text-4xl font-bold leading-5 text-center text-white uppercase 2xl:text-5xl 2xl:leading-5'>
           My work
           <span className="relative flex-col self-end inline-block lowercase before:block -z-10 w-fit before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500">
@@ -210,8 +211,8 @@ function App() {
           </div>
         </div>
       </section>
-      <section id='3' className='flex flex-col items-center justify-center w-full h-screen bg-[#f4f9fc]' style={{ 'scrollSnapAlign': 'start' }}>
-        <div className='p-8 bg-white rounded-lg shadow-2xl mx-72 2xl:mx-96'>
+      <section id='3' className='flex flex-col items-center justify-center w-full h-screen bg-white sm:bg-[#f4f9fc]' style={{ 'scrollSnapAlign': 'start' }}>
+        <div className='p-8 bg-white sm:rounded-lg sm:shadow-2xl sm:mx-72 2xl:mx-96'>
           <h1 className='2xl:text-xl mb-4 text-md font-semibold text-[#0f1b61]'>I am open to exciting job opportunities both in India and abroad, and I am eager to bring my skills and experience to new and challenging environments.
             <br /><br />Feel free to connect with me. I will get back to you as soon as possible.😉</h1>
           <form ref={formRef} onSubmit={sendEmail}>
