@@ -83,7 +83,7 @@
         {
             "name": "EasyPlanner",
             "completed": false,
-            "img": "logo_2.jpg",
+            "img": "easy_planner_logo.jpg",
             "techStack": [
                 "nextjs",
                 "tailwindcss",

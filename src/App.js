@@ -193,7 +193,7 @@ function App() {
           <span className="relative flex-col self-center inline-block lowercase sm:self-end before:block -z-10 w-fit before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500">
             <span className="relative text-base text-white 2xl:text-lg">awesome projects</span>
           </span></h1>
-        <div className='absolute project-scroller p-4 text-[#0f1b61] content-center h-full items-center sm:flex'>
+        <div className='absolute project-scroller sm:ml-0 p-4 text-[#0f1b61] content-center h-full items-center sm:flex'>
           <div className=''></div>
           {projectList.map((project, index) => <div key={project.name} className='hover:scale-[1.02] duration-[0.3s] select-none project-element project relative inline-block bg-white flex flex-col rounded-lg sm:w-[300px] 2xl:w-[380px] border-2 border-black parentProjectDiv z-20'>
             <img className='bg-gray-100 rounded-t-lg aspect-3/2 object-cover max-h-[224px]' alt='project' src={project?.img || 'placeholder-image.png'}></img>

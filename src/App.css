@@ -64,6 +64,7 @@
   grid-auto-flow: column;
   gap: 2rem;
   grid-auto-columns: 43%;
+  margin-left: -1rem;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
