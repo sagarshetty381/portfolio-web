@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
 .current {
   transition: all 0.6s ease-in-out;
   transform: rotate(0deg) scale(1.2);
@@ -11,13 +15,11 @@
 
 .project {
   cursor: pointer;
-  height: fit-content;
   transition: all 0.6s ease-in-out;
   background-image: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(192, 192, 192, 0));
   border: 1px solid rgba(192, 192, 192, 0.1);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
-
 .techStackDiv {
   translate: 50px;
   opacity: 0;
@@ -25,8 +27,10 @@
   z-index: -10;
 }
 .parentProjectDiv:hover {
-  transform: scale(1.02);
-  transition: all 0.6s ease-in-out;
+  grid-template-rows: 1fr;
+
+  /* transform: scale(1.02); */
+    /* transition: all 0.6s ease-in-out; */
 }
 
 .parentProjectDiv:hover .techStackDiv {
@@ -38,7 +42,6 @@
   display: block;
   overflow: visible;
 }
-
 .button {
   display: block;
   background: linear-gradient(to right, #3b82f6 50%, white 50%);
@@ -46,25 +49,28 @@
   background-position: right bottom;
   transition: all .5s ease-out;
 }
+
 .button:hover {
   background-position: left bottom;
 }
+
 .text:hover {
   color: white;
   transition: all .5s ease-out;
 }
-
 .project-scroller {
   display: grid;
   width: auto;
   grid-auto-flow: column;
   gap: 2rem;
-  grid-auto-columns: 63%;
+  grid-auto-columns: 43%;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
   scroll-padding-inline: 4rem;
   scrollbar-width: none;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s ease-out;
 }
 
 .project-element {

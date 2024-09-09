@@ -34,7 +34,7 @@ function App() {
       listEl.firstChild.classList.remove('current');
     };
     sectionNavElements[sectionIndex].firstChild.classList.add('current');
-  }, [sectionNavElements])
+  }, [sectionNavElements]);
 
   const sectionWatcherCallback = useCallback((sections) => {
     sections.forEach((section) => {
@@ -153,9 +153,11 @@ function App() {
             <li><button className='w-3 h-3 transition-all rotate-45 border-2 border-blue-700 2xl:w-4 2xl:h-4 ' onClick={e => { navigateToSection(2) }} data-sectionindex="2"></button></li>
             <li><button className='w-3 h-3 transition-all rotate-45 border-2 border-blue-700 2xl:w-4 2xl:h-4 ' onClick={e => { navigateToSection(3) }} data-sectionindex="3"></button></li>
           </ul>
-          <ul className='absolute top-0 left-0 z-30 flex flex-col items-center justify-center gap-4 p-4 bg-white rounded-md shadow-2xl top-2 sm:top-auto shadow-cyan-900'>
+          <ul className='absolute left-0 z-30 flex flex-col items-center justify-center gap-4 p-4 bg-white rounded-md shadow-2xl opacity-75 sm:opacity-100 top-2 sm:top-auto shadow-cyan-900'>
             {['github', 'linkedin'].map(social => <li key={social}><a rel="noreferrer" target='_blank' href={techStackIcon[social]}><img alt={social} src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${social}/${social}-original.svg`} className='w-6 h-6 2xl:w-8 2xl:h-8' /></a></li>
             )}
+            <li key='email'><a href='https://medium.com/@sagar.shetty381'>
+              <img className="w-6 h-6 2xl:w-8 2xl:h-8" src="https://img.icons8.com/ios-filled/50/medium-logo.png" alt="medium" /></a></li>
             <li key='email'><a href='mailto:sagar.shetty381@gmail.com'>
               <img className="w-6 h-6 2xl:w-8 2xl:h-8" src="https://img.icons8.com/color/48/gmail--v1.png" alt="e-mail" /></a></li>
           </ul>
@@ -174,7 +176,7 @@ function App() {
             <p className='indent-4'>I hold a<b>  Bachelor of Engineering in Information Technology </b> from Terna Engineering College.</p>
             <p className='indent-4'>
               I am constantly exploring new technologies and methodologies to stay ahead in the rapidly evolving tech landscape.  I am dedicated to delivering top-notch solutions that drive user satisfaction and business success.
-              Feel free to explore my <a className='text-blue-600 underline' href={techStackIcon['github']}>GitHub</a> for a closer look at my projects, or connect with me on <a className='text-blue-700 underline' href={techStackIcon['linkedin']}>LinkedIn</a>.
+              Feel free to explore my <a className="text-blue-600 underline after:content-['_↗']" href={techStackIcon['github']} >GitHub</a> for a closer look at my projects, or connect with me on <a className="text-blue-700 underline after:content-['_↗']" href={techStackIcon['linkedin']}>LinkedIn</a>.
               <br /><span className='block text-center'>Let's create something amazing together!</span></p>
           </article>
           <article className='flex-1'>
@@ -191,27 +193,32 @@ function App() {
           <span className="relative flex-col self-center inline-block lowercase sm:self-end before:block -z-10 w-fit before:absolute before:-inset-1 before:-skew-y-3 before:bg-pink-500">
             <span className="relative text-base text-white 2xl:text-lg">awesome projects</span>
           </span></h1>
-        <div className='absolute project-scroller p-4 text-[#0f1b61] h-full items-center sm:flex'>
+        <div className='absolute project-scroller p-4 text-[#0f1b61] content-center h-full items-center sm:flex'>
           <div className=''></div>
-          {projectList.map((project, index) => {
-            return <div key={project.name} className='project-element project relative bg-white flex flex-col rounded-lg sm:w-[300px] 2xl:w-[400px] border-2 border-black parentProjectDiv z-20'>
-              <img className='bg-gray-100 rounded-t-lg aspect-3/2 object-cover max-h-[224px]' alt='project' src={project?.img || 'placeholder-image.png'}></img>
-              <div className='absolute flex flex-col gap-3 p-2 bg-white rounded-md techStackDiv -left-10'>
-                {project?.techStack.map((tech) => <img key={tech} alt='tech' className='w-5 h-5' src={techStackIcon[tech]} />)}
-              </div>
-              <div className='p-2 text-sm 2xl:text-lg'>
-                <h2 className='font-bold text-center text-md 2xl:text-xl'>{project.name}</h2>
-                <p className='line-clamp-2 description'><span className='font-semibold'>Tools used:</span> {project.toolsUsed.join(", ")}</p>
-                <p className='line-clamp-3 description'><span className='font-semibold'>Description:</span> {project.description}</p>
-              </div>
+          {projectList.map((project, index) => <div key={project.name} className='hover:scale-[1.02] duration-[0.3s] select-none project-element project relative inline-block bg-white flex flex-col rounded-lg sm:w-[300px] 2xl:w-[380px] border-2 border-black parentProjectDiv z-20'>
+            <img className='bg-gray-100 rounded-t-lg aspect-3/2 object-cover max-h-[224px]' alt='project' src={project?.img || 'placeholder-image.png'}></img>
+            <div className='absolute flex flex-col gap-3 p-2 bg-white rounded-md techStackDiv -left-10'>
+              {project?.techStack.map((tech) => <img key={tech} alt='tech' className='w-5 h-5' src={techStackIcon[tech]} />)}
             </div>
-          })}
+            <div className='p-2 text-sm 2xl:text-lg'>
+              <div className='flex justify-between'>
+                <div className='flex items-center gap-2'>
+                  <h2 className='text-lg font-bold text-center 2xl:text-xl'>{project.name}</h2>
+                  <h1 className={`px-1 text-xs border-2 rounded-xl + ${project?.completed ? 'bg-green-200 text-green-600 border-green-600' : 'bg-red-200 text-red-600 border-red-600'}`}>{project?.completed ? 'Live' : 'In Development'}</h1>
+                  {project.liveLink && <a rel="noreferrer" target='_blank' href={project.liveLink}><img className='w-4 h-4 hover:scale-105 md:w-5 md:h-5' src="https://img.icons8.com/ios-glyphs/30/external-link.png" alt="external-link" /></a>}
+                </div>
+                {project.githubLink && <a rel="noreferrer" target='_blank' href={project.githubLink}><img className='w-5 h-5 md:w-6 md:h-6' alt='github' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></a>}
+              </div>
+              <p className='line-clamp-2 description '><span className='font-bold sm:font-semibold'>Tools used:</span> {project.toolsUsed.join(", ")}</p>
+              <p className='line-clamp-3 description '><span className='font-bold sm:font-semibold'>Description:</span> {project.description}</p>
+            </div>
+          </div>)}
           <div className=''></div>
         </div>
-        <div className='relative mx-auto my-auto mb-4 rounded-lg cursor-pointer button'>
+        {/* <div className='relative mx-auto my-auto mb-4 rounded-lg cursor-pointer button'>
           <div className='z-10 px-3 py-2 text-lg font-bold text-blue-500 border-2 border-blue-500 rounded-lg text'>Explore More
           </div>
-        </div>
+        </div> */}
       </section>
       <section id='3' className='flex flex-col items-center justify-center w-full h-screen bg-white md:bg-[#f4f9fc]' style={{ 'scrollSnapAlign': 'start' }}>
         <div className='p-8 bg-white sm:rounded-lg sm:shadow-2xl md:mx-48 lg:mx-72 2xl:mx-96'>
@@ -258,7 +265,7 @@ function App() {
       <div className='h-20 bg-[#0f1b61] flex relative justify-center' style={{ 'scrollSnapAlign': 'start' }}>
         <p className='absolute font-semibold text-white bottom-6'>@ Copyright 2024, Made By <a className='underline' href='/'>Sagar Shetty</a></p>
       </div>
-    </main>
+    </main >
   );
 }
 
