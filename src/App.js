@@ -143,7 +143,7 @@ function App() {
   }
 
   return (
-    <main className="w-full h-screen overflow-y-scroll" style={{ 'scrollSnapType': 'y mandatory', 'scrollbarWidth': 'none' }}>
+    <main className="w-full h-screen overflow-x-hidden overflow-y-scroll" style={{ 'scrollSnapType': 'y mandatory', 'scrollbarWidth': 'none' }}>
       <section id='0' className='w-full h-screen p-5' style={{ 'scrollSnapAlign': 'start' }}>
         <div className='bg-[#f4f9fc] h-full flex flex-col justify-center items-center'>
           <h1 className='text-5xl text-center text-blue-500 sm:text-6xl 2xl:text-8xl'><b>Hi, I am <br />Sagar Shetty</b></h1>
