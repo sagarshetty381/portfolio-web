@@ -62,11 +62,12 @@
                 "Apache Kafka",
                 "Redis pub/sub"
             ],
-            "description": "Developed a dating web application using React.js and Node.js. It utilizes web sockets to ensure users only see profiles of currently online users, maximizing engagement potential. Leverages Apache Kafka and Redis pub/sub for efficient database workload handling. Added WebRTC for video calling and API polling to maintain real time communication between the users."
+            "description": "Built a full stack dating application built with ReactJS and NodeJS."
         },
         {
             "name": "Pocketpedia",
             "githubLink": "https://github.com/sagarshetty381/gsmarena-graphql",
+            "img":"github-image.webp",
             "completed": true,
             "techStack": [
                 "nodejs",
@@ -78,7 +79,7 @@
                 "GraphQL",
                 "TypeScript"
             ],
-            "description": "Developed a GraphQL web scrapping API using Node.js for efficient data retrieval. This API uses asynchronous programming for real-time web scraping of product information from GSMArena.com, supporting pagination and flexible GraphQL queries."
+            "description": "GraphQL-based web scraping API using Node.js to fetch data from GSMArena."
         },
         {
             "name": "EasyPlanner",

@@ -195,22 +195,22 @@ function App() {
           </span></h1>
         <div className='absolute project-scroller sm:ml-0 p-4 text-[#0f1b61] content-center h-full items-center sm:flex'>
           <div className=''></div>
-          {projectList.map((project, index) => <div key={project.name} className='hover:scale-[1.02] duration-[0.3s] select-none project-element project relative inline-block bg-white flex flex-col rounded-lg sm:w-[300px] 2xl:w-[380px] border-2 border-black parentProjectDiv z-20'>
+          {projectList.map((project, index) => <div key={project.name} className='h-[420px] hover:scale-[1.02] duration-[0.3s] select-none project-element project relative bg-white flex flex-col rounded-lg sm:w-[300px] 2xl:w-[380px] border-2 border-black parentProjectDiv z-20'>
             <img className='bg-gray-100 rounded-t-lg aspect-3/2 object-cover max-h-[224px]' alt='project' src={project?.img || 'placeholder-image.png'}></img>
             <div className='absolute flex flex-col gap-3 p-2 bg-white rounded-md techStackDiv -left-10'>
               {project?.techStack.map((tech) => <img key={tech} alt='tech' className='w-5 h-5' src={techStackIcon[tech]} />)}
             </div>
-            <div className='p-2 text-sm 2xl:text-lg'>
+            <div className='p-2 bg-white 2xl:text-lg'>
               <div className='flex justify-between'>
                 <div className='flex items-center gap-2'>
                   <h2 className='text-lg font-bold text-center 2xl:text-xl'>{project.name}</h2>
-                  <h1 className={`px-1 text-xs border-2 rounded-xl + ${project?.completed ? 'bg-green-200 text-green-600 border-green-600' : 'bg-red-200 text-red-600 border-red-600'}`}>{project?.completed ? 'Live' : 'In Development'}</h1>
-                  {project.liveLink && <a rel="noreferrer" target='_blank' href={project.liveLink}><img className='w-4 h-4 hover:scale-105 md:w-5 md:h-5' src="https://img.icons8.com/ios-glyphs/30/external-link.png" alt="external-link" /></a>}
+                  <h1 className={`px-[5px] text-[10px] leading-[20px] border-2 rounded-xl + ${project?.completed ? 'bg-green-200 text-green-600 border-green-600' : 'bg-red-200 text-red-600 border-red-600'}`}>{project?.completed ? 'Live' : 'In Development'}</h1>
+                  {project.liveLink && <a rel="noreferrer" target='_blank' href={project.liveLink}><img className='w-3 h-3 hover:scale-125 md:w-4 md:h-4' src="https://img.icons8.com/ios-glyphs/30/external-link.png" alt="external-link" /></a>}
                 </div>
                 {project.githubLink && <a rel="noreferrer" target='_blank' href={project.githubLink}><img className='w-5 h-5 md:w-6 md:h-6' alt='github' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></a>}
               </div>
-              <p className='line-clamp-2 description '><span className='font-bold sm:font-semibold'>Tools used:</span> {project.toolsUsed.join(", ")}</p>
-              <p className='line-clamp-3 description '><span className='font-bold sm:font-semibold'>Description:</span> {project.description}</p>
+              <p className='description '><span className='font-bold sm:font-semibold'>Tools used:</span> {project.toolsUsed.join(", ")}</p>
+              <p className='line-clamp-4 description '><span className='font-bold sm:font-semibold'>Description:</span> {project.description}</p>
             </div>
           </div>)}
           <div className=''></div>
