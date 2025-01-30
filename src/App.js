@@ -196,7 +196,7 @@ function App() {
         <div className='absolute project-scroller sm:ml-0 p-4 text-[#0f1b61] content-center h-full items-center sm:flex'>
           <div className=''></div>
           {projectList.map((project, index) => <div key={project.name} className='h-[420px] hover:scale-[1.02] duration-[0.3s] select-none project-element project relative bg-white flex flex-col rounded-lg sm:w-[300px] 2xl:w-[380px] border-2 border-black parentProjectDiv z-20'>
-            <img className='bg-gray-100 rounded-t-lg aspect-3/2 object-cover max-h-[224px]' alt='project' src={project?.img || 'placeholder-image.png'}></img>
+            <img className='bg-gray-100 rounded-t-lg aspect-3/2 object-cover h-[224px]' alt='project' src={project?.img || 'placeholder-image.png'}></img>
             <div className='absolute flex flex-col gap-3 p-2 bg-white rounded-md techStackDiv -left-10'>
               {project?.techStack.map((tech) => <img key={tech} alt='tech' className='w-5 h-5' src={techStackIcon[tech]} />)}
             </div>
