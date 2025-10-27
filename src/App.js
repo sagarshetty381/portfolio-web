@@ -142,37 +142,6 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    setSectionElements(document.querySelectorAll('section'));
-    setSectionNavElements(document.getElementsByClassName('sectionNav')[0].getElementsByTagName('li'));
-  }, [])
-
-  function showToast(toastType) {
-    if (toastType === 'success') {
-      toast.success('Email received', {
-        position: "bottom-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-    } else if (toastType === 'error') {
-      toast.error('Error sending email', {
-        position: "bottom-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-    }
-  }
-
   return (
     <main className="overflow-x-hidden overflow-y-scroll w-full h-screen" style={{ 'scrollSnapType': 'y mandatory', 'scrollbarWidth': 'none' }}>
       <section id='0' className='p-5 w-full h-screen' style={{ 'scrollSnapAlign': 'start' }}>
