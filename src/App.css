@@ -1,38 +1,83 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "cursive", cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.current {
+  transition: all 0.6s ease-in-out;
+  transform: rotate(0deg) scale(1.2);
+  background-color: rgb(59 130 246);
+  border-color: white;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.project {
+  cursor: pointer;
+  transition: all 0.6s ease-in-out;
+  background-image: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(192, 192, 192, 0));
+  border: 1px solid rgba(192, 192, 192, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+.techStackDiv {
+  translate: 50px;
+  /* opacity: 0; */
+  transition: all 0.6s ease-in-out;
+  z-index: -10;
+}
+.parentProjectDiv:hover {
+  grid-template-rows: 1fr;
+
+  /* transform: scale(1.02); */
+    /* transition: all 0.6s ease-in-out; */
   }
+  
+  .parentProjectDiv:hover .techStackDiv {
+    translate: 0;
+    opacity: 1;
+  }
+  
+  .description {
+    font-size: 16px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.parentProjectDiv:hover .description {
+  display: block;
+  overflow: visible;
+}
+
+.button {
+  display: block;
+  background: linear-gradient(to right, #3b82f6 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
+}
+
+.button:hover {
+  background-position: left bottom;
+}
+.text:hover {
   color: white;
+  transition: all .5s ease-out;
+}
+.project-scroller {
+  display: grid;
+  width: auto;
+  grid-auto-flow: column;
+  gap: 2rem;
+  grid-auto-columns: 43%;
+  margin-left: -1rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: 4rem;
+  scrollbar-width: none;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s ease-out;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.project-element {
+  scroll-snap-align: start;
 }
