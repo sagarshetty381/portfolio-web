@@ -156,7 +156,7 @@ function App() {
           <ul className='flex absolute left-0 top-2 z-30 flex-col gap-4 justify-center items-center p-4 bg-white rounded-md shadow-2xl opacity-75 sm:opacity-100 sm:top-auto shadow-cyan-900'>
             {['github', 'linkedin'].map(social => <li key={social}><a rel="noreferrer" target='_blank' href={techStackIcon[social]}><img alt={social} src={`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${social}/${social}-original.svg`} className='w-6 h-6 2xl:w-8 2xl:h-8' /></a></li>
             )}
-            <li key='medium'><a href='https://medium.com/@sagar.shetty381' target='_blank'>
+            <li key='medium'><a href='https://medium.com/@sagar.shetty381' target='_blank' rel="noreferrer noopener">
               <img className="w-6 h-6 2xl:w-8 2xl:h-8" src="https://img.icons8.com/ios-filled/50/medium-logo.png" alt="medium" /></a></li>
             <li key='email'><a href='mailto:sagar.shetty381@gmail.com'>
               <img className="w-6 h-6 2xl:w-8 2xl:h-8" src="https://img.icons8.com/color/48/gmail--v1.png" alt="e-mail" /></a></li>
