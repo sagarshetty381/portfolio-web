@@ -1,9 +1,12 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [],
+  "short_name": "Portfolio",
+  "name": "Sagar Shetty's Portfolio",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "description": "A portfolio showcasing the projects and skills of Sagar Shetty",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en"
 }
