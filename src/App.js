@@ -12,17 +12,6 @@ const watchOptions = {
   rootMargin: '0px',
   threshold: 0.6
 }
-import emailjs from '@emailjs/browser';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-const configJson = require('./portfolioContentConfig.json');
-
-const { projectListArr, iconLinkList } = configJson;
-const watchOptions = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0.6
-}
 
 function App() {
   const [errors, setErrors] = useState({});
@@ -154,108 +143,10 @@ function App() {
     }
   }
 
-  const [errors, setErrors] = useState({});
-  const [sectionNavElements, setSectionNavElements] = useState();
-  const [sectionElements, setSectionElements] = useState();
-  const [techStackIcon] = useState(iconLinkList);
-  const [projectList] = useState(projectListArr);
-  const formRef = useRef();
-
-  const SERVICE_ID = process.env.REACT_APP_SERVICE_ID || '';
-  const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID || '';
-  const PUBLIC_KEY = process.env.REACT_APP_PUBLIC_KEY || '';
-
   useEffect(() => {
     setSectionElements(document.querySelectorAll('section'));
     setSectionNavElements(document.getElementsByClassName('sectionNav')[0].getElementsByTagName('li'));
   }, [])
-
-  const updateMenuOnScroll = useCallback((sectionIndex) => {
-    for (let listEl of sectionNavElements) {
-      listEl.firstChild.classList.remove('current');
-    };
-    sectionNavElements[sectionIndex].firstChild.classList.add('current');
-  }, [sectionNavElements]);
-
-  const sectionWatcherCallback = useCallback((sections) => {
-    sections.forEach((section) => {
-      if (!section.isIntersecting) return;
-      updateMenuOnScroll(section.target.id);
-    })
-  }, [updateMenuOnScroll]);
-
-  const sectionWatcher = useMemo(() => {
-    return new IntersectionObserver(sectionWatcherCallback, watchOptions);
-  }, [sectionWatcherCallback]); // Add dependencies here
-
-  useEffect(() => {
-    sectionElements?.forEach((section) => {
-      sectionWatcher.observe(section);
-    })
-
-    return () => {
-      sectionElements?.forEach((section) => {
-        sectionWatcher.unobserve(section);
-      })
-    }
-  }, [sectionElements, sectionWatcher]);
-
-  function navigateToSection(sectionIndex) {
-    if (sectionIndex === undefined) return;
-    updateMenuOnScroll(sectionIndex);
-
-    if (sectionIndex <= sectionElements.length - 1) {
-      sectionElements[sectionIndex]?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-
-  const validateForm = () => {
-    const form = formRef.current;
-    const errors = {};
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-
-    if (!name) {
-      errors.name = "Name is required";
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email) {
-      errors.email = "Email is required";
-    } else if (!emailRegex.test(email)) {
-      errors.email = "Invalid email address";
-    }
-
-    if (!message) {
-      errors.message = "Message is required";
-    }
-
-    return errors;
-  };
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-    const formErrors = validateForm();
-    setErrors(formErrors);
-    if (Object.keys(formErrors).length === 0) {
-      emailjs
-        .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, {
-          publicKey: PUBLIC_KEY,
-        })
-        .then(
-          () => {
-            showToast("success")
-            setErrors({});
-            formRef.current.reset();
-          },
-          (error) => {
-            setErrors({});
-            showToast("error");
-          },
-        );
-    }
-  };
 
   function showToast(toastType) {
     if (toastType === 'success') {
